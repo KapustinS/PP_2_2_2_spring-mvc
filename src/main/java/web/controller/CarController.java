@@ -12,7 +12,6 @@ import web.DAO.CarDAO;
 public class CarController {
 
     private final CarDAO carDAO;
-    private static final int MAX_COUNT_CARS = 5;
 
     @Autowired
     public CarController(CarDAO carDAO) {
@@ -23,7 +22,7 @@ public class CarController {
     public String showCars(@RequestParam(value = "count", required = false) Integer count,
                            Model model) {
         if (count == null || count < 0) {
-            count = MAX_COUNT_CARS;
+            count = carDAO.getCarList().size();
         }
         model.addAttribute("carList", carDAO.getCarList(count));
         return "cars";

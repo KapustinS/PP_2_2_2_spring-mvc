@@ -23,4 +23,8 @@ public class CarDAO {
     public List<Car> getCarList(int count){
         return carList.stream().limit(count).collect(Collectors.toList());
     }
+
+    public List<Car> getCarList() {
+        return carList;
+    }
 }
