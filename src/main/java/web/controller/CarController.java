@@ -22,7 +22,7 @@ public class CarController {
     @GetMapping({"/cars"})
     public String showCars(@RequestParam(value = "count", required = false) Integer count,
                            Model model) {
-        if (count == null) {
+        if (count == null || count < 0) {
             count = MAX_COUNT_CARS;
         }
         model.addAttribute("carList", carDAO.getCarList(count));
